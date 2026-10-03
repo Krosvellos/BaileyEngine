@@ -9,6 +9,12 @@ void GameLoop::runGameLoop(){
             playground->render();
             playground->display();
         }
+        bool isThisTheEnd = playground->isEnd(player->getPosition());
+        if(isThisTheEnd) {
+            std::cout << "You WON!" << '\n';
+            std::cout << "Exiting Game loop!" << std::endl;
+            setStatus('X');
+        }
         char inputKey;
         std::cin >> inputKey;
         bool lastKeyIsForGame = false;
@@ -48,13 +54,14 @@ void GameLoop::runGameLoop(){
 
         Position newPosition = player->getPosition();
         bool canPlayerGoThere;
-
+        
         switch(inputKey) {
             case 'w' :
                 newPosition.y = newPosition.y - 1;
                 canPlayerGoThere = playground->isWalkable(newPosition);
                 if(canPlayerGoThere) {
                     player->setPosition(newPosition);
+                    
                 }
 
                 break;

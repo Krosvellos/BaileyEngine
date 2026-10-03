@@ -14,7 +14,7 @@ class Board {
         std::vector<Npc*> enemies;
         std::vector<CellType> map;
         mutable std::vector<char> displayBuffer;
-        
+
     public:
         Board(int sizeX, int sizeY, PlayerCharacter* p, std::vector<CellType> newMap);
         void setEnemies(std::vector<Npc*> enemyList);
@@ -22,7 +22,7 @@ class Board {
         void generateBorder();
         void display() const;
         bool isWalkable(Position target) const;
-        
+        bool isEnd(Position target) const;
 };
 
 #endif

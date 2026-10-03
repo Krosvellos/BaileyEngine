@@ -16,6 +16,7 @@ int main() {
     int width = 50;
     int height = 50;
     std::vector<CellType> grid(width * height, CellType::Floor);
+    grid[25*25] = CellType::Exit;
     me.setPosition({15,15});
     Board gameBoard(width, height, &me, grid);
     gameBoard.generateBorder();

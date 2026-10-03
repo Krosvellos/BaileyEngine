@@ -53,7 +53,7 @@ void Board::display() const {
 
     for(std::vector<CellType>::size_type i = 0; i != displayBuffer.size(); i++) {
     
-        std::cout << displayBuffer[i];
+        std::cout << displayBuffer[i] << displayBuffer[i];
 
         if((i + 1) % boardSizeX == 0){
             std::cout << '\n';
@@ -74,5 +74,13 @@ bool Board::isWalkable(Position target) const {
             return true;
         default:              
             return false;
+    }
+}
+
+bool Board::isEnd(Position target) const {
+    if(map[target.y * boardSizeX + target.x] == CellType::Exit){
+        return true;
+    } else {
+        return false;
     }
 }
